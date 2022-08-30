@@ -1,0 +1,217 @@
+<div id="navbar">
+    <img src="./img/logo.svg" alt="Jy-jai anime" id="logo">
+
+    <div class="toggol">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+    </div>
+
+    <ul id="navElements">
+        <li><a href="index.html">Home</a></li>
+        <li id="category"><a href="#">Category</a>
+            <ul>
+                <li><a href="#">action</a></li>
+                <li><a href="#">drama</a></li>
+                <li><a href="#">fantasy</a></li>
+                <li><a href="#">fantasy</a></li>
+                <li><a href="#">fantasy</a></li>
+                <li><a href="#">fantasy</a></li>
+                <li><a href="#">fantasy</a></li>
+                <li><a href="#">fantasy</a></li>
+                <li><a href="#">fantasy</a></li>
+                <li><a href="#">fantasy</a></li>
+                <li><a href="#">fantasy</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Contact Us</a></li>
+    </ul>
+</div>
+
+<style>
+
+
+    #navbar {
+        /* width: 100%; */
+        height: 8vh;
+        width: 100vw;
+        min-height: 45px;
+        /* background-color: var(--red); */
+        position: absolute;
+    }
+
+    #navbar > .toggol {
+        display: none;
+    }
+
+    #navbar > #logo{
+        margin: 15px;
+        width: 5vw;
+        min-width: 60px;
+        display: inline;
+    }
+
+    #navbar > ul{
+        display: flex;
+        float: right;
+        margin-right: 25px;
+    }
+
+    #navbar > ul > li{
+        /* float: right; */
+        list-style-type: none;
+        margin: 0 5px;
+        margin-top: 15px;
+        /* width: 150px; */
+    }
+
+    #navbar > ul > li > a{
+        display: block;
+        background-color: var(--red);
+        font-size: 1rem;
+        text-align: center;
+        padding: 5px 10px;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        font-weight: 600;
+        transition: 0.5s;
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -ms-transition: 0.5s;
+        -o-transition: 0.5s;
+    }
+
+    #navbar > ul > li:hover > a{
+        text-decoration: underline;
+        background-color: var(--cyan);
+    }
+
+    #navbar > ul > li > a{
+        text-decoration: none;
+        color: var(--white);
+        padding: 5px 20px;
+        transition: 1s;
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+    }
+
+    /* should be when hovered*/
+    #navbar > ul > li#category:hover > a{
+
+        padding: 5px calc((10vw - 100%)/2);
+
+        transition: 1s;
+        /*deletethislater*/
+        background-color: var(--cyan);
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+    }
+
+    #navbar > ul > li#category > ul{
+        /*should be none*/
+        display: none;
+    }
+
+    #navbar > ul > li#category:hover > ul {
+        display: block;
+    }
+
+    #navbar > ul > li#category > ul{
+        text-align: center;
+        list-style-type: none;
+        height: calc(30vh + 10px);
+        margin-top: -8px;
+        padding: 5px 10px 5px 10px;
+        overflow-x: hidden;
+        background-color: var(--cyan);
+        border-radius: 0 0 10px 10px;
+    }
+
+    #navbar > ul > li#category > ul > li {
+        margin:  0;
+        border-top: 1px solid var(--white);
+    }
+
+    #navbar > ul > li#category > ul > li:last-child {
+        border-bottom: 1px solid var(--white);
+    }
+
+    #navbar > ul > li#category > ul > li > a {
+        display: block;
+        text-decoration: none;
+        text-transform: capitalize;
+        color: var(--white);
+        font-size: 1rem;
+        text-align: center;
+        padding: 5px 0px;
+
+        font-weight: 600;
+
+        transition: 0.5s;
+        -webkit-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -ms-transition: 0.5s;
+        -o-transition: 0.5s;
+    }
+
+    #navbar > ul > li#category > ul > li:hover > a{
+        text-decoration: underline;
+        background-color: var(--red);
+    }
+
+    @media screen and (max-width: 490px) {
+        #navbar{
+            position: absolute;
+        }
+
+        #navbar > #logo{
+        }
+
+        #navbar > .toggol {
+            display: block;
+            position: absolute;
+            right: -140px;
+            top: -140px;
+            padding: 10px;
+            margin: 10px;
+            background-color: var(--red);
+            border-radius: 20%;
+            border: 5px solid var(--white);
+            transform: scale(0.15);
+            z-index: 3;
+        }
+        
+        #navbar > .toggol > svg > path{
+            fill: var(--white);
+        }
+
+        #navbar > ul {
+            margin: 0;
+            padding: 0px 10px;
+            padding-top: 65px;
+            padding-bottom: -95px;
+            /* should be inline block */
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            float: right;
+            background-color: var(--white);
+            height: 100vh;
+        }
+
+        #navbar > ul > li#category > ul {
+            height: unset;
+        }
+    }
+</style>
+
+<script>
+</script>

@@ -1,0 +1,634 @@
+@font-face {
+    font-family: "coolvetica";
+    src: url("/fonts/coolvetica\ compressed\ hv.otf") format("otf"),
+    url("/fonts/coolvetica\ condensed\ rg.otf") format("otf"),
+    url("fonts/coolvetica\ crammed\ rg.otf") format("otf"),
+    url("/fonts/coolvetica\ rg.otf") format("otf"),
+    url("/fonts/coolvetica\ rg\ it.otf") format("otf"),
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+    position:absolute;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: var(--red);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    position:absolute;
+
+}
+
+:root{
+    --red: #c72230;
+    --blue: #111221;
+    --light-blue: #2d2f46;
+    --cyan: #308c9b;
+    --white: #fff;
+
+    --res-screen: 490;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+    font-family: 'Poppins', sans-serif;
+    /* font-size : clamp(14px, 16px, 24px); */
+    font-size: 150%;
+    /* overflow-x: hidden; */
+}
+
+/* normal colors */
+.red{
+    color: var(--red)
+}
+
+.blue{
+    color: var(--blue)
+}
+
+.l-blue{
+    color: var(--light-blue)
+}
+
+.cyan{
+    color: var(--cyan)
+}
+
+.white{
+    color: var(--white)
+}
+
+/* background colors */
+.b-red{
+    background-color: var(--red);
+}
+
+.b-blue{
+    background-color: var(--blue);
+}
+
+.b-l-blue{
+    background-color: var(--light-blue);
+}
+
+.b-cyan{
+    background-color: var(--cyan);
+}
+
+.b-white{
+    background-color: var(--white);
+}
+
+.bold{
+    font-weight: 600;
+}
+
+.Xtitle{
+    font-size: 5rem;
+    line-height: 5rem;
+}
+
+@media screen and (max-width: 490px) {
+    .Xtitle{
+        font-size: 3rem;
+        line-height: 2.5rem;
+    }
+}
+
+/* global elements */
+.button{
+    outline: none;
+    border: none;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.button:active{
+    background-color: var(--cyan);
+}
+
+input[type=text]{
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.episods{
+    padding: 2px 5px;
+    display: inline;
+    text-align: center;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.status{
+    padding: 2px 5px;
+    display: inline;
+    text-align: center;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.rating{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 5px 5.5px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+
+.loader{
+    display: block;
+
+}
+
+/* banner slider */
+#header {
+    width: 100vw;
+    height: 100vh;
+}
+
+#header > .continer{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-wrap: nowrap;
+    position: relative;
+    overflow: hidden;
+    z-index: -1;
+    left: 0;
+    /* animation: 15s slider infinite;
+    -webkit-animation: 15s slider infinite; */
+}
+
+#header > div.continer > div.banner{
+    height: 100vh;
+    position: relative;
+    animation: 25s slider infinite;
+    -webkit-animation: 25s slider infinite;
+}
+
+@keyframes slider {
+	0% {
+		left: 0;
+	}
+	20% {
+		left: 0;
+	}
+	25% {
+		left: -100%;
+	}
+	45% {
+		left: -100%;
+	}
+	50% {
+		left: -200%;
+	}
+	70% {
+		left: -200%;
+	}
+	75% {
+		left: -300%;
+	}
+	95% {
+		left: -300%;
+	}
+	100% {
+		left: -0%;
+	}
+}
+
+#header > .continer > .banner > img{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+#header > .continer > .banner > .info{
+    width: 50vw;
+    position:absolute;
+    left: 5%;
+    bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
+}
+
+#header > .continer > .banner > .info > p.Xtitle{
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+#header > .continer > .banner > .info > p.resum{
+    display: inline-block;
+
+    width: 50vw;
+    color: var(--blue);
+    text-shadow: 2px 2px 1px white;
+    font-weight: 600;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+#header > .continer > .banner > .info > .button {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* search section */
+
+main{
+    margin: 0 auto;
+    width: 100vw;
+    padding: 10px 4vw;
+}
+
+main > #search{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+main > #search > input#searchBar {
+    width: 65%;
+    height: 6vh;
+}
+
+main > #search > input#searchButton{
+    width: 20%;
+    font-size: 1rem;
+}
+
+/* sections title */
+
+section > .sectionTitle{
+    margin: 35px auto 15px;
+    padding: 10px;
+    width: 100%;
+    padding: 10px 10px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+
+section > .sectionTitle > p{
+    /* background-color: #111221; */
+    display: inline;
+    position: relative;
+    font-size: 1.8rem;
+    padding-bottom: 0;
+    /* border-bottom: 4px solid white; */
+}
+
+section > .sectionTitle > p::after{
+    content: "";
+    width: 110%;
+    height: 5px;
+    background-color: var(--blue);
+    border-radius: 2px;
+    position: absolute;
+    left: 0%;
+    bottom: -2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+section > .sectionTitle > a{
+    color: white;
+    font-weight: 600;
+    font-family: 'coolvetica';
+    letter-spacing: 0.1rem;
+}
+
+/* anime cards */
+section > .list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4%;
+    flex-wrap: wrap;
+}
+
+section > .list > .card{
+    margin-bottom: 25px;
+    width: 15vw;
+    overflow: hidden;
+    padding-bottom: 10px;
+    position: relative;
+    background-color: var(--light-blue);
+    /* border: 2px solid var(--white); */
+    border-bottom: 1px solid var(--white);
+    border-radius: 5%;
+    -webkit-border-radius: 5%;
+    -moz-border-radius: 5%;
+    -ms-border-radius: 5%;
+    -o-border-radius: 5%;
+}
+
+@media screen and (max-width: 1400px) {
+    section > .list > .card{
+        width: 16%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    section > .list > .card{
+        width: 50%;
+    }
+}
+
+/* section > .list > .card > a {
+    text-decoration: none;
+    color: unset;
+} */
+
+section > .list > .card > img {
+    height: 300px;
+    object-fit: cover;
+    width: 100%;
+}
+
+section > .list > .card > .info > .anime_title {
+    font-family: 'coolvetica';
+    letter-spacing: 0.1rem;
+    font-size: 1.2rem;
+    width: 100%;
+    height: 10%;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+section > .list > .card > .info{
+    padding: 0 10px;
+    width: 100%;
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+section > .list > .card > .info > .subInfo{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+section > .list > .card > .info > .subInfo > .episods {
+    width: 30%;
+    font-size: 0.55rem;
+}
+
+section > .list > .card > .info > .subInfo > .rating {
+    align-content: flex-end;
+    gap: 5px;
+}
+
+section > .list > .card > .info > .subInfo > .rating > .note{
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+section > .list > .card > .info > .subInfo > .rating > span{
+    font-size: 0.8rem;
+    margin-top: 3px;
+}
+
+/* top anime section */
+
+section#topAnime{
+    width: 100%;
+}
+
+section#topAnime > .content{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+
+section#topAnime > .content > .preview > .cover{
+    display: none;
+    width: 60vw;
+    position: relative;
+    height: 75vh;
+    overflow: hidden;
+}
+
+section#topAnime > .content > .preview > .cover.active{
+    display: block;
+}
+
+@media screen and (max-width: 900px) {
+    section#topAnime > .content{
+        display: block;
+    }
+
+    section#topAnime > .content > .preview > .cover{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+section#topAnime > .content > .preview > .cover > img{
+    width: 100%;
+    height: inherit;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+section#topAnime > .content > .preview > .cover > .rating{
+    position: absolute;
+    top:5px;
+    right: 5px;
+}
+
+section#topAnime > .content > .preview > .cover > .info{
+    /* display: none; */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    flex: 1 0;
+}
+
+section#topAnime > .content > .preview > .cover > .info > p.name{
+    /* font-size: 3rem; */
+    font-size: clamp(1.5rem, 2.5rem, 3rem);
+    line-height: 2.4rem;
+    width: 75%;
+    height: 65%;
+    min-height: 40%;
+    overflow: hidden;
+    text-transform: uppercase;
+    margin-left: 5px;
+    position: absolute;
+    top: -50%;
+    text-shadow: 2px 2px 2px white;
+}
+
+section#topAnime > .content > .preview > .cover > .info > p.description{
+    padding: 20px 10px 10px 10px;
+    font-size: 0.8rem;
+}
+
+/*****************************************************************/
+
+section#topAnime > .content > .vertical-list{
+    width: 45vw;
+    max-height: 75vh;
+    z-index: 300;
+    /* background-color: red; */
+    display:block;
+    flex-direction: column;
+    gap: 5px;
+    overflow: scroll;
+
+    padding: 10px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+section#topAnime > .content > .vertical-list > .v-card{
+    /* background-color: rgba(255, 255, 255, 0.2); */
+    /* border: 2px solid var(--white); */
+    border-bottom: 1px solid var(--white);
+    border-top: 1px solid var(--white);
+    margin: 5px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    min-height: 50px;
+    height: 28vh;
+    max-height: 100vh;
+    /* max-height: 300px; */
+    overflow: hidden;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+section#topAnime > .content > .vertical-list > .v-card.active{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+section#topAnime > .content > .vertical-list > .v-card > img{
+    display: block;
+    position: relative;
+    height: 100%;
+    min-width: 25%;
+    border: 2px solid black;
+    object-fit: cover;
+    object-position: center;
+}
+
+section#topAnime > .content > .vertical-list > .v-card > .info {
+    padding: 5px;
+}
+
+section#topAnime > .content > .vertical-list > .v-card > .info > .name{
+    font-family: "coolvetica";
+    text-transform: uppercase;
+    letter-spacing: 0.12rem;
+    font-size: 1.2rem;
+    word-wrap: break-word;
+}
+
+section#topAnime > .content > .vertical-list > .v-card > .info > .episods{
+    font-size: 1rem;
+    font-weight: 600;
+    display: inline;
+    float: left;
+    margin: 5px 5px 5px 0;
+    padding: 2px 10px;
+}
+
+section#topAnime > .content > .vertical-list > .v-card > .info > .status{
+    font-size: 1rem;
+    font-weight: 600;
+    display: inline;
+    margin: 5px 5px 5px 0;
+    padding: 2px 10px;
+}
+
+section#topAnime > .content >
+.vertical-list > .v-card > .info > .rating{
+    float: left;
+    margin-left: 10px;
+    font-size: 1rem;
+}
+
+section#topAnime > .content > .vertical-list > .v-card > .info > .category{
+    clear: both;
+}
+
+section#topAnime > .content > .vertical-list > .v-card > .info > .category > ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+section#topAnime > .content > .vertical-list > .v-card > .info > .category > ul > li{
+    font-size: 1rem;
+    list-style-type: none;
+    padding: 2px 5px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}

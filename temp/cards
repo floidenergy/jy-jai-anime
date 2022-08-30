@@ -1,0 +1,20 @@
+
+<div class="card">
+    <img src="/img/aot cover.jpg" alt="">
+    <div class="info">
+        <p class="anime_title bold red">Attack On Titan</p>
+        <div class="subInfo">
+            <p class="episods b-cyan">21 EP</p>
+            <span class="rating">
+                <p class="note cyan">4.7</p>
+                <span class="white">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                </span>
+            </span>
+        </div>
+    </div>
+</div>

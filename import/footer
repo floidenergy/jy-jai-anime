@@ -1,0 +1,16 @@
+<p> &copy; 2022 made by floid energy, All Right reserved</p>
+
+<style>
+    footer#footer{
+        width: 100vw;
+        background-color: var(--blue);
+        height: 200px;
+        margin-bottom: 0;
+    }
+
+    footer#footer > p {
+        color: white;
+        text-align: center;
+        padding-top: 70px;
+    }
+</style>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="id"></h1>
+    <div id="video">
+        <!-- <iframe src="https://goload.io/streaming.php?id=MTkxMjY5&title=Cardfight%21%21+Vanguard%3A+Will%2BDress+Episode+9&typesub=SUB" frameborder="0" allowfullscreen></iframe> -->
+
+        <video src="https://www09.gogocdn.stream/videos/hls/5NsSr4s27PzysAM63Tr8PA/1661861638/191353/ea42f480b2f6e0fe0548b9b56c89b9ea/ep.93.1661837553.m3u8" autoplay ></video>
+    </div>
+    <script>
+
+        async function GetanimeEp(){
+
+            const localUrl = new URL(window.location.href);
+            
+            const epUrl = localUrl.searchParams.get('episodUrl');
+            const id = localUrl.searchParams.get('id')
+            const epId = localUrl.searchParams.get('EpId')
+            const data = await fetch(`https://consumet-api.herokuapp.com/anime/gogoanime/watch/${epId}`).then(r => r.json())
+            // const id = localStorage.getItem("anime_id");
+            // sessionStorage.setItem(anime_id, id)
+            // console.log(data.headers.Referer);
+            // document.getElementById('video').innerHTML = `<ifram src="${data.headers.referer}"><iframe>`;
+
+
+            document.getElementById('id').innerText = localUrl.searchParams.get('id');
+            // console.log(header);
+            // localStorage.removeItem("anime_id")}
+        }
+
+        GetanimeEp()
+    </script>
+</body>
+</html>
