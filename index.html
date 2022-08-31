@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- <meta http-equiv="refresh" content="2"> -->
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#c72230">
 
     <!-- google fonts -->
@@ -68,8 +68,10 @@
 
     <main class="b-blue">
         <section id="search">
-            <input type="text" placeholder="&#xF002; Search" style="font-family: FontAwesome, poppins;" class="b-l-blue white" id="searchBar">
-            <input type="button" class="button b-red white bold" id="searchButton" value="Search">
+            <form action="post">
+                <input type="text" placeholder="&#xF002; Search" style="font-family: FontAwesome, poppins;" class="b-l-blue white" id="searchBar">
+                <input type="button" class="button b-red white bold" id="searchButton" value="Search">
+            </form>
         </section>
 
         <section class="" id="recent-ep">
@@ -96,7 +98,7 @@
             </div>
         </section>
 
-        <section class="" id="Popular">
+        <section class="" id="popular">
             <div class="sectionTitle b-red">
                 <p class="bold white"><i class="bi bi-list"></i> Most Watched</p>
                 <a href="#">More</a>
@@ -104,14 +106,15 @@
             <div class="list">
 
             </div>
-    </section>
-
+        </section>
     </main>
+    
+    
 
     <footer id="footer">
     </footer>
 
-    <script src="script.js"></script>
+    <script src="importExternalDocument.js"></script>
     <script src="api.js"></script>
 </body>
 </html>

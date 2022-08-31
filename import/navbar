@@ -11,17 +11,24 @@
         <li><a href="index.html">Home</a></li>
         <li id="category"><a href="#">Category</a>
             <ul>
-                <li><a href="#">action</a></li>
-                <li><a href="#">drama</a></li>
-                <li><a href="#">fantasy</a></li>
-                <li><a href="#">fantasy</a></li>
-                <li><a href="#">fantasy</a></li>
-                <li><a href="#">fantasy</a></li>
-                <li><a href="#">fantasy</a></li>
-                <li><a href="#">fantasy</a></li>
-                <li><a href="#">fantasy</a></li>
-                <li><a href="#">fantasy</a></li>
-                <li><a href="#">fantasy</a></li>
+                <li class="Action"><a href="#">Action</a></li>
+                <li class="Adventure"><a href="#">Adventure</a></li>
+                <li class="Cars"><a href="#">Cars</a></li>
+                <li class="Comedy"><a href="#">Comedy</a></li>
+                <li class="Drama"><a href="#">Drama</a></li>
+                <li class="Fantasy"><a href="#">Fantasy</a></li>
+                <li class="Horror"><a href="#">Horror</a></li>
+                <li class="Mahou Shouja"><a href="#">Mahou Shouja</a></li>
+                <li class="Mecha"><a href="#">Mecha</a></li>
+                <li class="Music"><a href="#">Music</a></li>
+                <li class="Mystery"><a href="#">Mystery</a></li>
+                <li class="Psychological"><a href="#">Psychological</a></li>
+                <li class="Romance"><a href="#">Romance</a></li>
+                <li class="Sci-Fi"><a href="#">Sci-Fi</a></li>
+                <li class="Slice of Life"><a href="#">Slice of Life</a></li>
+                <li class="Sports"><a href="#">Sports</a></li>
+                <li class="Supernatural"><a href="#">Supernatural</a></li>
+                <li class="Thriller"><a href="#">Thriller</a></li>
             </ul>
         </li>
         <li><a href="#">Contact Us</a></li>
@@ -176,7 +183,7 @@
 
         #navbar > .toggol {
             display: block;
-            position: absolute;
+            position: fixed;
             right: -140px;
             top: -140px;
             padding: 10px;
@@ -199,7 +206,7 @@
             padding-bottom: -95px;
             /* should be inline block */
             display: none;
-            position: absolute;
+            position: fixed;
             top: 0;
             right: 0;
             float: right;

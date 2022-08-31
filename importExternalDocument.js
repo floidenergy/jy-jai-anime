@@ -1,4 +1,5 @@
 let isToggled = false;
+let isLoaded = false;
 
 async function settingExternalDocument(){
     const loaderData = await fetch('./import/loader').then(res => res.text());
@@ -9,13 +10,15 @@ async function settingExternalDocument(){
     let result = await fetch('./import/navbar');
     let data = await result.text();
     navbar.innerHTML = data;
+
     toggelNavBar();
+
     const footer = document.querySelector('#footer');
     result = await fetch('./import/footer');
     data = await result.text();
+    footer.innerHTML = data;    
 
-    
-
+    isLoaded = true;
 }
 
 // toggel nav bar for mobile contability

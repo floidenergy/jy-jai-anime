@@ -1,12 +1,7 @@
 const api = 'https://consumet-api.herokuapp.com'
 const server = 'meta/anilist';
 
-//TODO: empliment search bar feater
-//TODO: SHOW ANIME BY CATEGORY
-//TODO: FOOTER
-
 var activeCoverIndex = 0;
-
 
 async function GetRecentEp(){
     const data = await fetch(`${api}/${server}/recent-episodes`).then(r => r.json());
@@ -16,64 +11,69 @@ async function GetRecentEp(){
         let newCard = document.createElement('div');
         newCard.className = 'card';
         newCard.id = index
-        newCard.innerHTML = `<img src="${element.image}" alt="">
-        <div class="info">
-            <p class="anime_title bold red">${element.title.english || element.title.native}</p>
-            <div class="subInfo">
-                <p class="episods bold" style="font-size:18px; width: unset;">EP ${element.episodeNumber}</p>
+
+        const direction = new URL(window.location.origin +'/Detail.html');
+        direction.searchParams.set('id', element.id);
+
+        newCard.innerHTML = `
+        <a href="${direction}">
+            <img src="${element.image}" alt="">
+            <div class="info">
+                <p class="anime_title bold red">${element.title.english || element.title.native}</p>
+                <div class="subInfo">
+                    <p class="episods bold" style="font-size:18px; width: unset;">EP ${element.episodeNumber}</p>
+                </div>
             </div>
-        </div>`;
+        </a>
+        `;
 
 
         recentEpSection.appendChild(newCard)
     })
 
-    // array.slice(0, 5).indexOf(0).
+    const SeeMoreLink = new URL(window.location.origin + "/result.html")
+    SeeMoreLink.searchParams.set('type', "seeMore");
+    SeeMoreLink.searchParams.set('searchQuery', "RecentEpisods");
 
-    recentEpSection.childNodes.forEach(e =>{
-        e.onclick = () => {
-            const direction = new URL(window.location.href+'Detail.html');
-            const element = data.results.slice(0, 10)[e.id];
-            direction.searchParams.set('id', element.id);
-            window.location.href = direction;
-        };
-    })
-    document.getElementById('loader').style.display = 'none';
+    document.querySelector('section#recent-ep > .sectionTitle > a').href = SeeMoreLink;
 }
 
 async function GetPopularAnime(){
     const data = await fetch(`${api}/${server}/popular`).then(r => r.json());
-    const recentEpSection = document.querySelector('#Popular > .list')
+    const recentEpSection = document.querySelector('#popular > .list')
 
     data.results.slice(0, 10).map((element, index) =>{
         let newCard = document.createElement('div');
         newCard.className = 'card';
         newCard.id = index
-        newCard.innerHTML = `<img src="${element.image}" alt="">
-        <div class="info">
-            <p class="anime_title bold red">${element.title.english || element.title.native}</p>
-            <div class="subInfo">
-                <p class="episods b-cyan">EP ${element.totalEpisodes}</p>
-                <span class="rating" style="font-size: 3px !important;">
-                    ${GetRattingElement(element.rating).innerHTML}
-                </span>
+        
+    
+        
+        const direction = new URL(window.location.origin +'/Detail.html');
+        direction.searchParams.set('id', element.id);
+        newCard.innerHTML =
+        `<a href="${direction}">
+            <img src="${element.image}" alt="">
+            <div class="info">
+                <p class="anime_title bold red">${element.title.english || element.title.native}</p>
+                <div class="subInfo">
+                    <p class="episods b-cyan">EP ${element.totalEpisodes}</p>
+                    <span class="rating" style="font-size: 3px !important;">
+                        ${GetRattingElement(element.rating).innerHTML}
+                    </span>
+                </div>
             </div>
-        </div>`;
+        </a>`;
 
 
         recentEpSection.appendChild(newCard)
     })
 
-    // array.slice(0, 5).indexOf(0).
+    const SeeMoreLink = new URL(window.location.origin + "/result.html")
+    SeeMoreLink.searchParams.set('type', "seeMore");
+    SeeMoreLink.searchParams.set('searchQuery', "popularAnime");
 
-    recentEpSection.childNodes.forEach(e =>{
-        e.onclick = () => {
-            const direction = new URL(window.location.href+'Detail.html');
-            const element = data.results.slice(0, 10)[e.id];
-            direction.searchParams.set('id', element.id);
-            window.location.href = direction;
-        };
-    })
+    document.querySelector('section#popular > .sectionTitle > a').href = SeeMoreLink;
 
 }
 
@@ -89,18 +89,23 @@ async function GetTrendingAnime(){
         // anime cover
         const newCover = document.createElement('div');
         newCover.className = "cover";
-        newCover.id = e.id
+        // newCover.id = e.id;
+
+        const direction = new URL(window.location.origin +'/Detail.html');
+        direction.searchParams.set('id', e.id);
 
         newCover.innerHTML=
-        `<img src="${e.cover}" alt="${e.title.english || e.title.userPreferred}" class="avatar">
-        <span class="rating white b-blue">
-            ${GetRattingElement(e.rating).innerHTML}
-        </span>
+        `<a href="${direction}">
+            <img src="${e.cover}" alt="${e.title.english || e.title.userPreferred}" class="avatar">
+            <span class="rating white b-blue">
+                ${GetRattingElement(e.rating).innerHTML}
+            </span>
 
-        <div class="info b-red">
-            <p class="name Xtitle bold blue">${e.title.english || e.title.userPreferred}</p>
-            <p class="description white">${e.description.split("\n")[0]}</p>
-        </div>`;
+            <div class="info b-red">
+                <p class="name Xtitle bold blue">${e.title.english || e.title.userPreferred}</p>
+                <p class="description white">${e.description.split("\n")[0]}</p>
+            </div>
+        </a>`;
 
         // creating cards scrolling element
         const newVCard = document.createElement('div');
@@ -153,6 +158,12 @@ async function GetTrendingAnime(){
 
     listDiv.children[0].classList.add('active');
     coverDiv.children[0].classList.add('active');
+
+    const SeeMoreLink = new URL(window.location.origin + "/result.html")
+    SeeMoreLink.searchParams.set('type', "seeMore");
+    SeeMoreLink.searchParams.set('searchQuery', "TrendingAnime");
+
+    document.querySelector('section#TrendingAnime > .sectionTitle > a').href = SeeMoreLink;
 
     setInterval(SwitchActiveCover, 7000);
 }
@@ -210,21 +221,11 @@ function SwitchActiveCover(){
     const listDiv = document.querySelector('#TrendingAnime > .content .vertical-list');
     const coverDiv = document.querySelector('section > .content > .preview');
 
-        console.log(activeCoverIndex);
     if(activeCoverIndex == listDiv.childNodes.length - 2)
         activeCoverIndex = 0;
 
-    console.log(activeCoverIndex);
     activeCoverIndex++;
-    // console.log(listDiv.childNodes);
     
-    //remove active cover
-    // for (let index = 0; index < listDiv.children.length; index++) {
-    //     const element = listDiv.children[index];
-    //     // console.log(element);
-    //     // console.log(coverDiv.children[index]);
-    //     if(element.classList.contains('active'))
-    // }
     try{
         listDiv.querySelector('.active').classList.remove('active');
         coverDiv.querySelector('.active').classList.remove('active');
@@ -237,7 +238,57 @@ function SwitchActiveCover(){
 
 }
 
+async function _main(){
+    await GetRecentEp();
+    await GetTrendingAnime();
+    await GetPopularAnime();
 
-GetRecentEp();
-GetTrendingAnime();
-GetPopularAnime();
+    document.querySelector('#searchButton').onclick = () => {
+        const searchQuery = document.querySelector('#searchBar').value;
+        const nextUrl = new URL(window.location.href + "result.html");
+        nextUrl.searchParams.set('type', 'query')
+        nextUrl.searchParams.set('searchQuery', searchQuery);
+        window.location.href = nextUrl;
+    }
+
+    // wait till data is loaded
+    while(isLoaded == false){
+
+    }
+
+    // remove the loading div
+    document.getElementById('loader').style.display = 'none';
+
+    const footerCategory = document.querySelector('footer#footer > section#categories > ul');
+    for (let index = 0; index < footerCategory.children.length; index++) {
+            const element = footerCategory.children[index];
+
+            const nextUrl = new URL(window.location.href + "result.html");
+            nextUrl.searchParams.set('searchQuery', element.classList[0]);
+            nextUrl.searchParams.set('type', 'category')
+            element.firstChild.href = nextUrl;
+    }
+
+    const navBarCategory = document.querySelector('ul#navElements > li#category > ul')
+
+    for (let index = 0; index < navBarCategory.children.length; index++) {
+        const element = navBarCategory.children[index];
+        
+        const nextUrl = new URL(window.location.href + "result.html");
+        nextUrl.searchParams.set('searchQuery', element.classList[0]);
+        nextUrl.searchParams.set('type', 'category')
+        element.firstChild.href = nextUrl
+    }
+}
+
+_main()
+
+
+
+
+
+
+
+
+
+

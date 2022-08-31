@@ -279,18 +279,22 @@ main{
     padding: 10px 4vw;
 }
 
-main > #search{
+main > #search {
+    width: 100%;
+}
+
+main > #search > form{
     display: flex;
     justify-content: space-around;
     width: 100%;
 }
 
-main > #search > input#searchBar {
+main > #search > form > input#searchBar {
     width: 65%;
     height: 6vh;
 }
 
-main > #search > input#searchButton{
+main > #search > form > input#searchButton{
     width: 20%;
     font-size: 1rem;
 }
@@ -381,18 +385,19 @@ section > .list > .card{
         width: 80%;
     }
 }
-/* section > .list > .card > a {
+
+section > .list > .card > a {
     text-decoration: none;
     color: unset;
-} */
+}
 
-section > .list > .card > img {
+section > .list > .card > a > img {
     height: 300px;
     object-fit: cover;
     width: 100%;
 }
 
-section > .list > .card > .info > .anime_title {
+section > .list > .card > a > .info > .anime_title {
     font-family: 'coolvetica';
     letter-spacing: 0.1rem;
     font-size: 1.2rem;
@@ -407,7 +412,7 @@ section > .list > .card > .info > .anime_title {
     text-overflow: ellipsis;
 }
 
-section > .list > .card > .info{
+section > .list > .card > a > .info{
     padding: 0 10px;
     width: 100%;
     color: var(--white);
@@ -417,7 +422,7 @@ section > .list > .card > .info{
     flex-direction: column;
 }
 
-section > .list > .card > .info > .subInfo{
+section > .list > .card > a > .info > .subInfo{
     width: 100%;
     display: flex;
     gap: 10px;
@@ -426,22 +431,22 @@ section > .list > .card > .info > .subInfo{
 }
 
 
-section > .list > .card > .info > .subInfo > .episods {
+section > .list > .card > a > .info > .subInfo > .episods {
     width: 30%;
     font-size: 0.55rem;
 }
 
-section > .list > .card > .info > .subInfo > .rating {
+section > .list > .card > a > .info > .subInfo > .rating {
     align-content: flex-end;
     gap: 5px;
 }
 
-section > .list > .card > .info > .subInfo > .rating > .note{
+section > .list > .card > a > .info > .subInfo > .rating > .note{
     font-size: 0.8rem;
     font-weight: 600;
 }
 
-section > .list > .card > .info > .subInfo > .rating > span{
+section > .list > .card > a > .info > .subInfo > .rating > span{
     font-size: 0.75rem;
     margin-top: 3px;
 }
@@ -483,28 +488,36 @@ section#TrendingAnime > .content > .preview > .cover.active{
         display: block;
     }
 
-    section#TrendingAnime > .content > .preview > .cover{
+    section#TrendingAnime > .content > .preview > .cover > a{
         width: 100%;
         margin-bottom: 10px;
     }
 }
 
-section#TrendingAnime > .content > .preview > .cover > img{
+section#TrendingAnime > .content > .preview > .cover > a{
+    color: unset;
     width: 100%;
-    height: inherit;
+    text-decoration: unset;
+}
+
+section#TrendingAnime > .content > .preview > .cover > a > img{
+    width: 100%;
+    height: 100%;
+    /* height: inherit; */
     display: block;
     object-fit: cover;
-    object-position: center;
+    position: relative;
+    object-position: ;
 }
 
 
-section#TrendingAnime > .content > .preview > .cover > .rating{
+section#TrendingAnime > .content > .preview > .cover > a > .rating{
     position: absolute;
     top:5px;
     right: 5px;
 }
 
-section#TrendingAnime > .content > .preview > .cover > .info{
+section#TrendingAnime > .content > .preview > .cover > a > .info{
     /* display: none; */
     position: absolute;
     bottom: 0;
@@ -512,7 +525,7 @@ section#TrendingAnime > .content > .preview > .cover > .info{
     flex: 1 0;
 }
 
-section#TrendingAnime > .content > .preview > .cover > .info > p.name{
+section#TrendingAnime > .content > .preview > .cover > a > .info > p.name{
     /* font-size: 3rem; */
     font-size: clamp(1.5rem, 2rem, 3rem);
     line-height: 2.4rem;
@@ -527,7 +540,7 @@ section#TrendingAnime > .content > .preview > .cover > .info > p.name{
     text-shadow: 2px 2px 2px white;
 }
 
-section#TrendingAnime > .content > .preview > .cover > .info > p.description{
+section#TrendingAnime > .content > .preview > .cover > a > .info > p.description{
     padding: 20px 10px 10px 10px;
     font-size: 0.8rem;
 }
@@ -562,9 +575,7 @@ section#TrendingAnime > .content > .vertical-list > .v-card{
     align-items: flex-start;
     gap: 10px;
     width: 100%;
-    min-height: 50px;
     height: 28vh;
-    max-height: 100vh;
     /*max-height: 300px;
     */overflow: hidden;
     transition:all 1s ease;
@@ -592,8 +603,7 @@ section#TrendingAnime > .content > .vertical-list > .v-card > img{
     display: block;
     position: relative;
     height: 100%;
-    min-width: 25%;
-    border: 2px solid black;
+    min-width: 35%;
     object-fit: cover;
     object-position: center;
 }
@@ -607,7 +617,11 @@ section#TrendingAnime > .content > .vertical-list > .v-card > .info > .name{
     text-transform: uppercase;
     letter-spacing: 0.12rem;
     font-size: 1.2rem;
-    word-wrap: break-word;
+    max-height: 75px;
+    overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 section#TrendingAnime > .content > .vertical-list > .v-card > .info > .episods{
@@ -660,3 +674,4 @@ section#TrendingAnime > .content > .vertical-list > .v-card > .info > .category 
         width: 100%;
     }
 }
+
