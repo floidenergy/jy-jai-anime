@@ -1,10 +1,9 @@
 const api = 'https://consumet-api.herokuapp.com'
 const server = 'meta/anilist';
 
-// function infoAnime (gogoAnimeRes, anilistRes){
-//     this.gogoAnime = gogoAnimeRes;
-//     this.anilist = anilistRes;
-// }
+//TODO: empliment search bar feater
+//TODO: SHOW ANIME BY CATEGORY
+//TODO: FOOTER
 
 var activeCoverIndex = 0;
 
@@ -208,7 +207,7 @@ function GetRattingElement(ratting){
 }
 
 function SwitchActiveCover(){
-    const listDiv = document.querySelector('#topAnime > .content .vertical-list');
+    const listDiv = document.querySelector('#TrendingAnime > .content .vertical-list');
     const coverDiv = document.querySelector('section > .content > .preview');
 
         console.log(activeCoverIndex);

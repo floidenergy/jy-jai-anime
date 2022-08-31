@@ -370,12 +370,17 @@ section > .list > .card{
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
     section > .list > .card{
-        width: 50%;
+        width: 45%;
     }
 }
 
+@media screen and (max-width: 400px) {
+    section > .list > .card{
+        width: 80%;
+    }
+}
 /* section > .list > .card > a {
     text-decoration: none;
     color: unset;
@@ -441,7 +446,7 @@ section > .list > .card > .info > .subInfo > .rating > span{
     margin-top: 3px;
 }
 
-/* top anime section */
+/* trending anime section */
 
 section#TrendingAnime{
     width: 100%;
@@ -483,6 +488,7 @@ section#TrendingAnime > .content > .preview > .cover.active{
         margin-bottom: 10px;
     }
 }
+
 section#TrendingAnime > .content > .preview > .cover > img{
     width: 100%;
     height: inherit;
@@ -647,4 +653,10 @@ section#TrendingAnime > .content > .vertical-list > .v-card > .info > .category 
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+}
+
+@media screen and (max-width: 900px) {
+    section#TrendingAnime > .content > .vertical-list{
+        width: 100%;
+    }
 }
