@@ -1,40 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta http-equiv="refresh" content="2"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#c72230" />
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- tab icon -->
+    <link rel="icon" href="img/logo_icon.ico" />
+
+    <!-- style sheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+
+    <title>Jy-jai Stream</title>
 </head>
+
 <body>
-    <h1 id="id"></h1>
-    <div id="video">
-        <!-- <iframe src="https://goload.io/streaming.php?id=MTkxMjY5&title=Cardfight%21%21+Vanguard%3A+Will%2BDress+Episode+9&typesub=SUB" frameborder="0" allowfullscreen></iframe> -->
+    <div id="loader"></div>
+    <nav></nav>
 
-        <video src="https://www09.gogocdn.stream/videos/hls/5NsSr4s27PzysAM63Tr8PA/1661861638/191353/ea42f480b2f6e0fe0548b9b56c89b9ea/ep.93.1661837553.m3u8" autoplay ></video>
-    </div>
-    <script>
+    <div class="separator b-white"></div>
+    <main class="b-blue">
 
-        async function GetanimeEp(){
+        <section class="" id="animeDetails">
+            <div class="content">
+                <div class="banner">
+                    <img src="" alt="" />
+                </div>
+                <p class="animeTitle bold red"></p>
+                <div class="" id="overView">
+                    <div id="animeCover">
+                        <img src="" alt="">
 
-            const localUrl = new URL(window.location.href);
-            
-            const epUrl = localUrl.searchParams.get('episodUrl');
-            const id = localUrl.searchParams.get('id')
-            const epId = localUrl.searchParams.get('EpId')
-            const data = await fetch(`https://consumet-api.herokuapp.com/anime/gogoanime/watch/${epId}`).then(r => r.json())
-            // const id = localStorage.getItem("anime_id");
-            // sessionStorage.setItem(anime_id, id)
-            // console.log(data.headers.Referer);
-            // document.getElementById('video').innerHTML = `<ifram src="${data.headers.referer}"><iframe>`;
+                        <div class="episods">
+                            <p class="episods b-cyan bold"></p>
+                        </div>
 
+                        <div class="rating">
+                        </div>
 
-            document.getElementById('id').innerText = localUrl.searchParams.get('id');
-            // console.log(header);
-            // localStorage.removeItem("anime_id")}
-        }
+                    </div>
 
-        GetanimeEp()
-    </script>
+                    <div class="" id="animeInfo">
+                            <div id="animeDetails">
+                                <p class="description b-l-blue white">
+                                </p>
+                            </div>
+
+                            <div class="" id="tags">
+                                <div class="releaseDate">
+                                    <ul>
+                                        <li class="b-cyan white">RELEASE DATE</li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="_status">
+                                    <ul>
+                                        <li class="b-cyan white">STATUS</li>
+                                    </ul>
+                                </div>
+                                <div class="studios">
+                                    <ul>
+                                        <li class="b-cyan white">STUDIOS</li>
+                                    </ul>
+                                </div>
+                                <div class="subOrDub">
+                                    <ul>
+                                        <li class="b-cyan white">SUB OR DUB</li>
+                                    </ul>
+                                </div>
+                                <div class="genres">
+                                    <ul>
+                                        <li class="b-cyan white">GENRE</li>
+                                    </ul>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="" id="episodes">
+            <div class="sectionTitle b-red">
+                <p class="bold white"><i class="bi bi-list"></i> Episods</p>
+            </div>
+            <div class="ep-list">
+                <ul>
+                </ul>
+            </div>
+        </section>
+
+        <section class="" id="characters">
+            <div class="sectionTitle b-red">
+                <p class="bold white"><i class="bi bi-list"></i> characters</p>
+            </div>
+            <div class="list">
+
+            </div>
+        </section>
+
+        <section class="" id="Suggestion">
+            <div class="sectionTitle b-red">
+                <p class="bold white"><i class="bi bi-list"></i> You May Also Like</p>
+            </div>
+            <div class="list">
+
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer"></footer>
+    <script src="/script/api.js"></script>
+    <script src="/script/importExternalDocument.js"></script>
+    <script src="/script/detail.js"></script>
 </body>
+
 </html>

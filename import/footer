@@ -81,7 +81,7 @@
 
     footer#footer > .footer_banner{
         height: 500px;
-        background: linear-gradient(rgba(199, 34, 48, 0.7), rgba(175, 11, 25, 0.7)), url('/img/banner.jpg');
+        background: linear-gradient(rgba(199, 34, 48, 0.7), rgba(175, 11, 25, 0.7)), url('../img/banner.jpg');
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
