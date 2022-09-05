@@ -2,7 +2,6 @@ isLoaded = false;
 
 
 async function _main(){
-    document.getElementById('loader').style.display = 'none';
      
     const localUrl = new URL(window.location.href)
     
@@ -15,6 +14,7 @@ async function _main(){
     // while(isLoaded == false){}
 
     // remove the loading div
+    document.getElementById('loader').style.display = 'none';
 
 }
 

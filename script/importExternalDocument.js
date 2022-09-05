@@ -19,6 +19,31 @@ async function settingExternalDocument(){
     footer.innerHTML = data;    
 
     isLoaded = true;
+
+    // footer category
+    const navBarCategory = document.querySelector('ul#navElements > li#category > ul')
+
+    for (let index = 0; index < navBarCategory.children.length; index++) {
+        const element = navBarCategory.children[index];
+        
+        const nextUrl = new URL(window.location.origin + "/result.html");
+        nextUrl.searchParams.set('searchQuery', element.classList[0]);
+        nextUrl.searchParams.set('type', 'category')
+        element.firstChild.href = nextUrl
+        // console.log(element);
+    }
+
+    const footerCategory = document.querySelector('footer#footer > section#categories > ul');
+
+    for (let index = 0; index < footerCategory.children.length; index++) {
+            const element = footerCategory.children[index];
+
+            const nextUrl = new URL(window.location.origin + "/result.html");
+            nextUrl.searchParams.set('searchQuery', element.classList[0]);
+            nextUrl.searchParams.set('type', 'category')
+            element.firstChild.href = nextUrl;
+    }
+    
 }
 
 // toggel nav bar for mobile contability

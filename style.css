@@ -90,6 +90,21 @@ body{
     background-color: var(--white);
 }
 
+/* beta */
+
+.beta{
+    display: block;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    z-index: 2550;
+}
 /* Bold text */
 .bold{
     font-weight: 600;
@@ -97,8 +112,9 @@ body{
 
 /* Large Text */
 .Xtitle{
-    font-size: 5rem;
-    line-height: 5rem;
+    font-size: 3rem;
+    line-height: 3rem;
+    text-transform: uppercase;
 }
 
 .separator{
@@ -114,19 +130,21 @@ body{
 
 /* global elements */
 .button{
+    font-size: 1rem;
     outline: none;
     border: none;
     font-weight: 600;
     padding: 10px;
     border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+}
+
+.button:hover{
+    background-color: var(--cyan);
 }
 
 .button:active{
-    background-color: var(--cyan);
+    background-color: var(--white);
+    color: var(--blue);
 }
 
 input[type=text]{
@@ -173,6 +191,7 @@ input[type=text]{
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+    font-size: 0.8rem !important;
 }
 
 
@@ -187,23 +206,23 @@ input[type=text]{
     height: 100vh;
 }
 
-#header > .continer{
+#header > .container{
     width: 100%;
     height: 100vh;
     display: flex;
     flex-wrap: nowrap;
     position: relative;
     overflow: hidden;
-    z-index: -1;
     left: 0;
     /* animation: 15s slider infinite;
     -webkit-animation: 15s slider infinite; */
 }
 
-#header > div.continer > div.banner{
+#header > div.container > div.banner{
     height: 100vh;
     position: relative;
     animation: 25s slider infinite;
+    -webkit-animation: 25s slider infinite;
     -webkit-animation: 25s slider infinite;
 }
 
@@ -237,34 +256,40 @@ input[type=text]{
 	}
 }
 
-#header > .continer > .banner > img{
+#header > .container > .banner > img{
     width: 100vw;
     height: 100vh;
     object-fit: cover;
 }
 
-#header > .continer > .banner > .info{
-    width: 50vw;
+#header > .container > .banner > .info{
+    width: 55vw;
     position:absolute;
     left: 5%;
     bottom: 10%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start
+    align-items: flex-start;
+    background-color: rgba(17, 18, 33, 0.3);
+    padding: 10px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
-#header > .continer > .banner > .info > p.Xtitle{
+#header > .container > .banner > .info > p.Xtitle{
     display: inline-block;
     margin-bottom: 10px;
 }
 
-#header > .continer > .banner > .info > p.resum{
+#header > .container > .banner > .info > p.resum{
     display: inline-block;
 
+    font-size: 0.7rem;
     width: 50vw;
-    color: var(--blue);
-    text-shadow: 2px 2px 1px white;
-    font-weight: 600;
+    /* text-shadow: 2px 2px 1px white; */
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -272,7 +297,7 @@ input[type=text]{
     -o-border-radius: 20px;
 }
 
-#header > .continer > .banner > .info > .button {
+#header > .container > .banner > .info > .button {
     display: inline-block;
     margin-top: 10px;
 }
@@ -921,7 +946,7 @@ section#episodes > .ep-list > ul > li > a:hover{
     -ms-border-radius: 10px;
 }
 
-/* watchin fram */
+/* watchin frame */
 
 section{
     width: 100%;
@@ -948,6 +973,7 @@ Section#watchSection > .content > iframe.watchFrame {
     width: inherit;
     aspect-ratio: 16 / 9;
     margin-bottom: 10px;
+    overflow: visible;
 }
 
 section#watchSection > .content > div.epNav {
@@ -956,3 +982,16 @@ section#watchSection > .content > div.epNav {
     font-size: 1.2rem;
 }
 
+/* search result section */
+section#result > .noResult > p{
+    text-align: center;
+    font-size: 5rem;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    display: none;
+}
+
+section#result > div.navButton {
+    display:flex;
+    justify-content: space-between;
+}

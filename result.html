@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -27,7 +26,6 @@
 
     <title>Jy-jai Stream</title>
 </head>
-
 <body>
     <div id="loader"></div>
     <nav></nav>
@@ -37,39 +35,36 @@
 
     <main class="b-blue">
         <div class="separator"></div>
-        
-        <section class="" id="watchSection">
-            <div class="content">
-                <div class="banner">
-                    <img src="img/testBanner.jpg" alt="" />
-                </div>
-                <p class="episodeNumber white">EP 152</p>
-                <iframe class="watchFrame" allowfullscreen src="" frameborder="0"></iframe>
+        <div class="separator"></div>
 
-                <div class="epNav">
-                    <a href="#" class="button prev b-red white blue">Prev</a>
-                    <a href="#" class="button back b-red white blue">Back to anime page</a>
-                    <a href="#" class="button next b-red white blue">Next</a>
-                </div>
-            </div>
-
+        <section id="search">
+            <form action="result.html">
+                <input type="text" name="searchQuery" placeholder="&#xF002; Search" style="font-family: FontAwesome, poppins;" class="b-l-blue white" id="searchBar">
+                <input type="submit" class="button b-red white bold" id="searchButton" value="Search">
+            </form>
         </section>
-
-        <section class="" id="Suggestion">
+        
+        <section class="" id="result">
             <div class="sectionTitle b-red">
-                <p class="bold white"><i class="bi bi-list"></i> Relational</p>
-                <a href="#">More</a>
+                <p class="bold white"><i class="bi bi-list"></i> result</p>
+            </div>
+            <div class="noResult">
+                <p class="l-blue bold">NO RESULT FOUND :"(</p>
             </div>
             <div class="list">
-                
+            </div>
+
+            <div class="navButton">
+                <a href="#" class="button prev b-red white">prev</a>
+                <p class="pages white"></p>
+                <a href="#" class="button next b-red white">next</a>
             </div>
         </section>
     </main>
 
-    <div class="separator b-white"></div>
     <footer id="footer"></footer>
     <script src="/script/api.js"></script>
     <script src="/script/importExternalDocument.js"></script>
-    <script src="/script/watch.js"></script>
+    <script src="/script/result.js"></script>
 </body>
 </html>

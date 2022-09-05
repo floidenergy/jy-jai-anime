@@ -7,14 +7,14 @@
         <li class="Drama"><a href="#">Drama</a></li>
         <li class="Fantasy"><a href="#">Fantasy</a></li>
         <li class="Horror"><a href="#">Horror</a></li>
-        <li class="Mahou Shouja"><a href="#">Mahou Shouja</a></li>
+        <li class="Mahou%20Shouja"><a href="#">Mahou Shouja</a></li>
         <li class="Mecha"><a href="#">Mecha</a></li>
         <li class="Music"><a href="#">Music</a></li>
         <li class="Mystery"><a href="#">Mystery</a></li>
         <li class="Psychological"><a href="#">Psychological</a></li>
         <li class="Romance"><a href="#">Romance</a></li>
         <li class="Sci-Fi"><a href="#">Sci-Fi</a></li>
-        <li class="Slice of Life"><a href="#">Slice of Life</a></li>
+        <li class="Slice%20of%20Life"><a href="#">Slice of Life</a></li>
         <li class="Sports"><a href="#">Sports</a></li>
         <li class="Supernatural"><a href="#">Supernatural</a></li>
         <li class="Thriller"><a href="#">Thriller</a></li>
@@ -22,16 +22,20 @@
 </section>
 
 <div class="footer_banner"></div>
-<ul class="footerInfo">
+<!-- <ul class="footerInfo">
     <li><a href="#">Privacy Policy</a></li>
     <div class="separator"></div>
     <li><a href="#">Terms Of Service</a></li>
     <div class="separator"></div>
     <li><a href="#">Contact Us</a></li>
-</ul>
-<p> &copy; 2022 Jy-jai, Made By <span class="red">Floid Energy</span> Mail to ads <span class="bold red">contact@jy-jai.dz</span>, All Right reserved</p>
+</ul> -->
+<div class="separator"></div>
+<p> &copy; 2022 Jy-jai, Made By <span class="red">Floid Energy</span>, All Right reserved</p>
+
+<!-- Mail to ads <span class="bold red">contact@jy-jai.dz</span>, -->
 
 <script src="../api.js"></script>
+
 <style>
 
     footer#footer > section#categories{
@@ -80,7 +84,7 @@
     }
 
     footer#footer > .footer_banner{
-        height: 500px;
+        height: 250px;
         background: linear-gradient(rgba(199, 34, 48, 0.7), rgba(175, 11, 25, 0.7)), url('../img/banner.jpg');
         background-position: center;
         background-size: cover;

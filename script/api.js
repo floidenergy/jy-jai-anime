@@ -4,6 +4,196 @@ const server = "meta/anilist";
 var activeCoverIndex = 0;
 
 
+async function GetBannerAnime(){
+  const res = await fetch(`${api}/${server}/popular?page=2`).then(r => r.json());
+
+  const data = res.results;
+
+  const headerContainer = document.querySelector('header#header > .container');
+  console.log(headerContainer);
+
+  data.slice(0, 4).map(anime => {
+    const bannerDiv = document.createElement('div')
+    bannerDiv.classList.add('banner');
+    
+    bannerDiv.innerHTML =
+    `<img src="${anime.cover}" alt="${anime.title.userPreferred || anime.title.english}" >
+    <div class="info">
+        <p class="bold red Xtitle">${anime.title.userPreferred || anime.title.english}</p>
+        <P class="resum white">${anime.description}</P>
+    </div>`
+
+    headerContainer.appendChild(bannerDiv)
+  })
+}
+
+async function GetCategorySearchResult(searchQuery, page = 1){
+  const respond = await fetch(`${api}/${server}/genre?genres=["${searchQuery}"]&page=${page}`).then(r => r.json());
+
+  console.log(respond);
+
+  const data = respond.results;
+  
+  if(data.length === 0){
+    console.log(document.querySelector("section#result > .noResult > p").style);
+    document.querySelector("section#result > .noResult > p").style.display = "block";
+  }
+  
+  try{
+    const suggestionsSectionList = document.querySelector(
+      "section#result > .list"
+    );
+
+    for (let index = 0; index < data.length; index++) {
+      const element = data[index];
+
+      if (!element) continue;
+      let newCard = document.createElement("div");
+      newCard.className = "card";
+      newCard.id = index;
+
+      const direction = new URL(window.location.origin + "/Detail.html");
+      direction.searchParams.set("animeID", element.id);
+
+      newCard.innerHTML = `
+            <a href="${direction}">
+                <img src="${element.image}" alt="">
+                <div class="info">
+                    <p class="title bold red">${
+                      element.title.english || element.title.native
+                    }</p>
+                    <div class="subInfo">
+                        <p class="episods bold" style="font-size: 0.8rem; width: unset;">${element.type}</p>
+                        <span class="rating white b-blue" style="font-size: 0.7rem">
+                            ${GetRattingElement(element.rating).innerHTML}
+                        </span>
+                    </div>
+                </div>
+            </a>`;
+
+      suggestionsSectionList.appendChild(newCard);
+    }
+
+    document.querySelector("section#result > .navButton > p.pages").innerText = respond.currentPage.toString().padStart(2, '0');
+
+    // console.log(respond.currentPage.toString().padStart(2, "0"));
+
+    if(respond.hasNextPage){
+      const nxtBut = document.querySelector('section#result > div.navButton > .next');
+      const nxtURL = new URL(`${window.location.origin}/result.html`);
+      nxtURL.searchParams.set('searchQuery', searchQuery);
+      nxtURL.searchParams.set('page', Number(respond.currentPage) + 1);
+      
+      nxtBut.href = nxtURL;
+    }else{
+      const nxtBut = document.querySelector('section#result > div.navButton > .next');
+      
+      nxtBut.style.pointerEvents = "none"
+      nxtBut.style.backgroundColor = "grey"
+    }
+
+    if(!((respond.currentPage - 1) <= 0)){
+      const prvBut = document.querySelector('section#result > div.navButton > .prev');
+      const nxtURL = new URL(`${window.location.origin}/result.html`);
+      prvURL.searchParams.set('searchQuery', searchQuery);
+      prvURL.searchParams.set('page', Number(respond.currentPage) - 1);
+      
+      prvBut.href = nxtURL;
+    }else{
+      const prvBut = document.querySelector('section#result > div.navButton > .prev');
+      
+      prvBut.style.pointerEvents = "none"
+      prvBut.style.backgroundColor = "grey"
+    }
+  }catch(err){
+    console.log(err);
+  }
+
+}
+
+async function GetQuerySearchResult(searchQuery, page = 1){
+  const respond = await fetch(`${api}/${server}/${searchQuery}?page=${page}`).then(r => r.json());
+
+  const data = respond.results;
+
+  
+  if(data.length === 0){
+    console.log(document.querySelector("section#result > .noResult > p").style);
+    document.querySelector("section#result > .noResult > p").style.display = "block";
+  }
+  
+  try{
+    const suggestionsSectionList = document.querySelector(
+      "section#result > .list"
+    );
+
+    for (let index = 0; index < data.length; index++) {
+      const element = data[index];
+
+      if (!element) continue;
+      let newCard = document.createElement("div");
+      newCard.className = "card";
+      newCard.id = index;
+
+      const direction = new URL(window.location.origin + "/Detail.html");
+      direction.searchParams.set("animeID", element.id);
+
+      newCard.innerHTML = `
+            <a href="${direction}">
+                <img src="${element.image}" alt="">
+                <div class="info">
+                    <p class="title bold red">${
+                      element.title.english || element.title.native
+                    }</p>
+                    <div class="subInfo">
+                        <p class="episods bold" style="font-size: 0.8rem; width: unset;">${element.format}</p>
+                        <span class="rating white b-blue" style="font-size: 0.7rem">
+                            ${GetRattingElement(element.rating).innerHTML}
+                        </span>
+                    </div>
+                </div>
+            </a>`;
+
+      suggestionsSectionList.appendChild(newCard);
+    }
+
+    document.querySelector("section#result > .navButton > p.pages").innerText = respond.currentPage.toString().padStart(2, '0');
+
+    // console.log(respond.currentPage.toString().padStart(2, "0"));
+
+    if(respond.hasNextPage){
+      const nxtBut = document.querySelector('section#result > div.navButton > .next');
+      const nxtURL = new URL(`${window.location.origin}/result.html`);
+      nxtURL.searchParams.set('searchQuery', searchQuery);
+      nxtURL.searchParams.set('page', Number(respond.currentPage) + 1);
+      
+      nxtBut.href = nxtURL;
+    }else{
+      const nxtBut = document.querySelector('section#result > div.navButton > .next');
+      
+      nxtBut.style.pointerEvents = "none"
+      nxtBut.style.backgroundColor = "grey"
+    }
+
+    if(!((respond.currentPage - 1) <= 0)){
+      const prvBut = document.querySelector('section#result > div.navButton > .prev');
+      const nxtURL = new URL(`${window.location.origin}/result.html`);
+      prvURL.searchParams.set('searchQuery', searchQuery);
+      prvURL.searchParams.set('page', Number(respond.currentPage) - 1);
+      
+      prvBut.href = nxtURL;
+    }else{
+      const prvBut = document.querySelector('section#result > div.navButton > .prev');
+      
+      prvBut.style.pointerEvents = "none"
+      prvBut.style.backgroundColor = "grey"
+    }
+  }catch(err){
+    console.log(err);
+  }
+
+}
+
 async function GetEpisodesStream(epID, animeID, epNumber){
     const epData = await fetch(`${api}/${server}/watch/${epID}`)
                             .then(r => r.json());
@@ -31,18 +221,25 @@ async function GetEpisodesStream(epID, animeID, epNumber){
         NextEpURL.searchParams.set('epNumber', Number(epNumber) + 1);
 
         document.querySelector("div.epNav > a.button.next").href = NextEpURL;
+    }else{
+      const nxtBut = document.querySelector("div.epNav > a.button.next")
+      nxtBut.style.pointerEvents = "none"
+      nxtBut.style.backgroundColor = "grey"
     }
 
     const prevEpURL = new URL(`${window.location.origin}/watch.html`)
 
-    let prevEp = data.episodes.filter(e => e.number == Number(epNumber) + 1)[0];
+    let prevEp = data.episodes.filter(e => e.number == Number(epNumber) - 1)[0];
 
     if(prevEp){
         prevEpURL.searchParams.set('epID', prevEp.id);
         prevEpURL.searchParams.set('animeID', data.id);
         prevEpURL.searchParams.set('epNumber', Number(epNumber) - 1);
-
         document.querySelector("div.epNav > a.button.prev").href = prevEpURL;
+    }else if(!prevEp){
+      const prvBut = document.querySelector("div.epNav > a.button.prev")
+      prvBut.style.pointerEvents = "none"
+      prvBut.style.backgroundColor = "grey"
     }
 
     const aniInfoURL = new URL(`${window.location.origin}/Detail.html`)
@@ -51,7 +248,7 @@ async function GetEpisodesStream(epID, animeID, epNumber){
 
     document.querySelector("div.epNav > a.button.back").href = aniInfoURL;
 
-}       
+}
 
 async function GetAnimeInfo(id) {
   try {
@@ -208,6 +405,7 @@ async function GetAnimeInfo(id) {
 }
 
 async function GetRelationalAnime(id) {
+
   try {
     const data = await fetch(`${api}/${server}/info/${id}`).then((r) =>
       r.json()
@@ -228,6 +426,14 @@ async function GetRelationalAnime(id) {
       const direction = new URL(window.location.origin + "/Detail.html");
       direction.searchParams.set("animeID", element.id);
 
+
+      let ep;
+
+      if(element.episodes != null || element.episodes != undefined){
+        ep = `Ep ${element.episodes}`;
+      }else{
+        ep = element.status
+      }
       newCard.innerHTML = `
             <a href="${direction}">
                 <img src="${element.image}" alt="">
@@ -236,11 +442,11 @@ async function GetRelationalAnime(id) {
                       element.title.english || element.title.native
                     }</p>
                     <div class="subInfo">
-                        <p class="episods bold" style="font-size: 0.8rem; width: unset;">EP ${
-                          element.episodes
+                        <p class="episods bold" style="font-size: 0.8rem; width: unset;">${
+                          ep
                         }</p>
                         <span class="rating white b-blue" style="font-size: 0.7rem">
-                            ${GetRattingElement(element.score).innerHTML}
+                            ${GetRattingElement(element.score || element.rating).innerHTML}
                         </span>
                     </div>
                 </div>
@@ -274,6 +480,14 @@ async function GetRecommendedAnime(id) {
       const direction = new URL(window.location.origin + "/Detail.html");
       direction.searchParams.set("animeID", element.id);
 
+      let ep;
+
+      if(element.episodes != null || element.episodes != undefined){
+        ep = `Ep ${element.episodes}`;
+      }else{
+        ep = element.status
+      }
+
       newCard.innerHTML = `
             <a href="${direction}">
                 <img src="${element.image}" alt="">
@@ -282,11 +496,11 @@ async function GetRecommendedAnime(id) {
                       element.title.english || element.title.native
                     }</p>
                     <div class="subInfo">
-                        <p class="episods bold" style="font-size: 0.8rem; width: unset;">EP ${
-                          element.episodes
+                        <p class="episods bold" style="font-size: 0.8rem; width: unset;">${
+                          ep
                         }</p>
                         <span class="rating white b-blue" style="font-size: 0.7rem">
-                            ${GetRattingElement(element.score).innerHTML}
+                            ${GetRattingElement(element.score || element.rating).innerHTML}
                         </span>
                     </div>
                 </div>
@@ -333,12 +547,12 @@ async function GetRecentEp() {
       recentEpSection.appendChild(newCard);
     });
 
-    const SeeMoreLink = new URL(window.location.origin + "/result.html");
-    SeeMoreLink.searchParams.set("type", "seeMore");
-    SeeMoreLink.searchParams.set("searchQuery", "RecentEpisods");
+    // seeMore recent episodes
+    //// const SeeMoreLink = new URL(window.location.origin + "/result.html");
+    //// SeeMoreLink.searchParams.set("type", "seeMore");
+    //// SeeMoreLink.searchParams.set("searchQuery", "RecentEpisods");
+    //// document.querySelector("section#recent-ep > .sectionTitle > a").href = SeeMoreLink;
 
-    document.querySelector("section#recent-ep > .sectionTitle > a").href =
-      SeeMoreLink;
   } catch (err) {
     console.log(err);
   }
@@ -376,12 +590,12 @@ async function GetPopularAnime() {
       recentEpSection.appendChild(newCard);
     });
 
-    const SeeMoreLink = new URL(window.location.origin + "/result.html");
-    SeeMoreLink.searchParams.set("type", "seeMore");
-    SeeMoreLink.searchParams.set("searchQuery", "popularAnime");
+    // See More Link
+    //// const SeeMoreLink = new URL(window.location.origin + "/result.html");
+    //// SeeMoreLink.searchParams.set("type", "seeMore");
+    //// SeeMoreLink.searchParams.set("searchQuery", "popularAnime");
+    //// document.querySelector("section#popular > .sectionTitle > a").href = SeeMoreLink;
 
-    document.querySelector("section#popular > .sectionTitle > a").href =
-      SeeMoreLink;
   } catch (err) {
     console.log(err);
   }
@@ -477,12 +691,11 @@ async function GetTrendingAnime() {
     listDiv.children[0].classList.add("active");
     coverDiv.children[0].classList.add("active");
 
-    const SeeMoreLink = new URL(window.location.origin + "/result.html");
-    SeeMoreLink.searchParams.set("type", "seeMore");
-    SeeMoreLink.searchParams.set("searchQuery", "TrendingAnime");
+    //// const SeeMoreLink = new URL(window.location.origin + "/result.html");
+    //// SeeMoreLink.searchParams.set("type", "seeMore");
+    //// SeeMoreLink.searchParams.set("searchQuery", "TrendingAnime");
 
-    document.querySelector("section#TrendingAnime > .sectionTitle > a").href =
-      SeeMoreLink;
+    //// document.querySelector("section#TrendingAnime > .sectionTitle > a").href = SeeMoreLink;
 
     setInterval(SwitchActiveCover, 7000);
   } catch (err) {
@@ -503,6 +716,7 @@ function GetRattingElement(ratting) {
                 <i class="bi "></i>
                 <i class="bi "></i>`;
 
+
   for (let index = 0; index <= starsContainer.childNodes.length + 1; index++) {
     const element = starsContainer.childNodes[index];
     try {
@@ -521,10 +735,14 @@ function GetRattingElement(ratting) {
     }
   }
 
-  exportElement.innerHTML = `<p class="note cyan bold">${pureRating}</p>
+  exportElement.innerHTML = `<p class="note cyan bold" style="font-size: 0.6rem;">${pureRating}</p>
             <span class="white">
                 ${starsContainer.innerHTML}
             </span>`;
+
+  // exportElement.innerHTML = ` <span class="white">
+  //                           ${starsContainer.innerHTML}
+  //                           </span>`;
 
   return exportElement;
 }
