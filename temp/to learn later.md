@@ -1,8 +1,9 @@
-scooping
-callbacks
+scooping !=
+callbacks !=
+
 passing function to another function
 
-refrence and value
+reference and value
 
 == === and how type coercion works
 

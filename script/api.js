@@ -2,7 +2,7 @@ const api = "https://consumet-api.herokuapp.com";
 const server = "meta/anilist";
 
 var activeCoverIndex = 0;
-
+let videoPlayer;
 
 async function GetBannerAnime(){
   const res = await fetch(`${api}/${server}/popular?page=2`).then(r => r.json());
@@ -10,7 +10,6 @@ async function GetBannerAnime(){
   const data = res.results;
 
   const headerContainer = document.querySelector('header#header > .container');
-  console.log(headerContainer);
 
   data.slice(0, 4).map(anime => {
     const bannerDiv = document.createElement('div')
@@ -207,7 +206,20 @@ async function GetEpisodesStream(epID, animeID, epNumber){
     document.querySelector("section#watchSection > .content > p.episodeNumber").innerText = `Ep ${epNumber}`
 
     // video ifram link 
-    document.querySelector("section#watchSection > .content > iframe.watchFrame").src = epData.headers.Referer;
+    // document.querySelector("section#watchSection > .content > iframe.watchFrame").src = epData.headers.Referer;
+
+    videoPlayer = videojs('videoTag')
+
+    videojs.responsive_ = true;
+    epData.sources.forEach(source => {
+      const sourceTag = document.createElement('source');
+      // sourceTag.src(source.url);
+      videoPlayer.src(source.url)
+      if(source.isM3U8){
+        sourceTag.setAttribute("type", "application/x-mpegURL")
+      }
+    })
+
 
     const NextEpURL = new URL(`${window.location.origin}/watch.html`)
     // epID=ao-ashi-episode-2&animeID=134732&epNumber=2

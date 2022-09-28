@@ -1,11 +1,3 @@
-@font-face {
-    font-family: "coolvetica";
-    src: url("/fonts/coolvetica\ compressed\ hv.otf") format("otf"),
-    url("/fonts/coolvetica\ condensed\ rg.otf") format("otf"),
-    url("fonts/coolvetica\ crammed\ rg.otf") format("otf"),
-    url("/fonts/coolvetica\ rg.otf") format("otf"),
-    url("/fonts/coolvetica\ rg\ it.otf") format("otf"),
-}
 
 ::-webkit-scrollbar{
     width: 5px;
@@ -369,7 +361,6 @@ section > .sectionTitle > p::after{
 section > .sectionTitle > a{
     color: white;
     font-weight: 600;
-    font-family: 'coolvetica';
     letter-spacing: 0.1rem;
 }
 
@@ -444,7 +435,6 @@ section > .list > .card img {
 }
 
 section > .list > .card .info > .title {
-    font-family: 'coolvetica';
     letter-spacing: 0.1rem;
     font-size: 1.2rem;
     width: 100%;
@@ -656,7 +646,6 @@ section#TrendingAnime > .content > .vertical-list > .v-card > .info {
 }
 
 section#TrendingAnime > .content > .vertical-list > .v-card > .info > .name{
-    font-family: "coolvetica";
     text-transform: uppercase;
     letter-spacing: 0.12rem;
     font-size: 1.2rem;
@@ -995,3 +984,11 @@ section#result > div.navButton {
     display:flex;
     justify-content: space-between;
 }
+
+
+/* video player */
+
+.videoPlayer{
+    margin: 25px auto;
+}
+

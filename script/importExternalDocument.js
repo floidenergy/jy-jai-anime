@@ -6,6 +6,14 @@ async function settingExternalDocument(){
     // console.log(loaderData);
     document.getElementById('loader').innerHTML = loaderData;
 
+    const path = document.querySelectorAll('#logoLoader path');
+
+    for (let index = 0; index < path.length; index++) {
+        // const element = path[index];
+        path.item(index).style.strokeDasharray = path.item(index).getTotalLength();
+        path.item(index).style.strokeDashoffset = path.item(index).getTotalLength();
+    }
+
     const navbar = document.querySelector('nav');
     let result = await fetch('import/navbar');
     let data = await result.text();
