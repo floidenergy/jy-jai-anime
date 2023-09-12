@@ -1,4 +1,4 @@
-const api = "https://consumet-api.herokuapp.com";
+const api = "https://api.consumet.org";
 const server = "meta/anilist";
 
 var activeCoverIndex = 0;
