@@ -1,11 +1,11 @@
-const api = "https://api.consumet.org";
+const api = "https://consumet-sandy.vercel.app";
 const server = "meta/anilist";
 
 var activeCoverIndex = 0;
 let videoPlayer;
 
 async function GetBannerAnime(){
-  const res = await fetch(`${api}/${server}/popular?page=2`).then(r => r.json());
+  const res = await fetch(`${api}/${server}/trending?page=2`).then(r => r.json());
 
   const data = res.results;
 
@@ -16,7 +16,7 @@ async function GetBannerAnime(){
     bannerDiv.classList.add('banner');
     
     bannerDiv.innerHTML =
-    `<img src="${anime.cover}" alt="${anime.title.userPreferred || anime.title.english}" >
+    `<img src="${anime.trailer.thumbnail}" alt="${anime.title.userPreferred || anime.title.english}" >
     <div class="info">
         <p class="bold red Xtitle">${anime.title.userPreferred || anime.title.english}</p>
         <P class="resum white">${anime.description}</P>
@@ -29,7 +29,6 @@ async function GetBannerAnime(){
 async function GetCategorySearchResult(searchQuery, page = 1){
   const respond = await fetch(`${api}/${server}/genre?genres=["${searchQuery}"]&page=${page}`).then(r => r.json());
 
-  console.log(respond);
 
   const data = respond.results;
   
